@@ -23,11 +23,11 @@ export async function addRoom(photo, roomType, roomPrice) {
         headers: { ...getHeader(), "Content-Type": "multipart/form-data" }
     })
 
-    if (response.status === 201) {
+    if (response.status >= 200 && response.status < 300) {
         return true;
-    } else {
-        return false;
     }
+
+    return false;
 }
 
 export async function getRoomType() {
@@ -50,10 +50,10 @@ export async function getAllRooms() {
 
 export async function deleteRoom(roomId) {
     try {
-        const result = await api.delete(`/rooms/delete/room/${roomId}`, {
+        await api.delete(`/rooms/delete/room/${roomId}`, {
             headers: getHeader()
         })
-        return result.data
+        return true
     } catch (error) {
         throw new Error(`Error deleting room ${error.message}`)
     }
@@ -82,10 +82,17 @@ export async function getRoomById(roomId) {
 }
 
 export async function getAvailableRooms(checkInDate, checkOutDate, roomType) {
-    const url = `rooms/available-rooms?checkInDate=${checkInDate}&checkOutDate=${checkOutDate}&roomType=${roomType}`
-
-    const result = await api.get(url)
-    return result;
+    try {
+        const result = await api.get(
+            `/rooms/available-rooms?checkInDate=${checkInDate}&checkOutDate=${checkOutDate}&roomType=${roomType}`
+        )
+        return result.data ?? []
+    } catch (error) {
+        if (error.response?.status === 204) {
+            return []
+        }
+        throw new Error("Error fetching available rooms")
+    }
 }
 
 // #endregion ------room api part------
@@ -164,11 +171,11 @@ export async function registerUser(registration) {
         const response = await api.post("/auth/register-user", registration)
         return response.data
     } catch (error) {
-        if (error.reeponse && error.response.data) {
+        if (error.response?.data) {
             throw new Error(error.response.data)
-        } else {
-            throw new Error(`User registration error : ${error.message}`)
         }
+
+        throw new Error(`User registration error : ${error.message}`)
     }
 }
 
@@ -177,20 +184,13 @@ export async function loginUser(login) {
         const response = await api.post("/auth/login", login)
         if (response.status >= 200 && response.status < 300) {
             return response.data
-        } else {
-            return null
         }
+
+        return null
     } catch (error) {
         console.error(error)
         return null
     }
-}
-
-export async function getUserProfile(userId) {
-    const response = await api.get(`/users/profile/${userId}`, {
-        headers: getHeader()
-    })
-    return response.data
 }
 
 export async function getUser(userId) {
@@ -207,7 +207,7 @@ export async function deleteUser(userId) {
         })
         return response.data
     } catch (error) {
-        return error.message
+        throw new Error(error.response?.data || error.message)
     }
 }
 

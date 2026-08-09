@@ -48,7 +48,7 @@ export default function BookingsTable({ bookingInfo, handleBookingCancellation }
           </tr>
         </thead>
         <tbody className="text-center">
-          {filteredBookings.map((booking, index) => {
+          {filteredBookings.map((booking, index) => (
             <tr key={booking.id}>
               <td>{index + 1}</td>
               <td>{booking.id}</td>
@@ -56,11 +56,11 @@ export default function BookingsTable({ bookingInfo, handleBookingCancellation }
               <td>{booking.room.roomType}</td>
               <td>{booking.checkInDate}</td>
               <td>{booking.checkOutDate}</td>
-              <td>{booking.guestName}</td>
+              <td>{booking.guestFullName}</td>
               <td>{booking.guestEmail}</td>
               <td>{booking.numOfAdults}</td>
               <td>{booking.numOfChildren}</td>
-              <td>{booking.totalNumOfGuests}</td>
+              <td>{booking.totalNumOfGuest}</td>
               <td>{booking.bookingConfirmationCode}</td>
               <td>
                 <button
@@ -71,7 +71,7 @@ export default function BookingsTable({ bookingInfo, handleBookingCancellation }
                 </button>
               </td>
             </tr>
-          })}
+          ))}
         </tbody>
       </table>
 

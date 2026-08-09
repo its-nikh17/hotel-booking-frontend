@@ -52,11 +52,11 @@ function ExistingRooms() {
     const handleDelete = async (roomId) => {
         try {
             const result = await deleteRoom(roomId)
-            if (result === "") {
-                setSuccessMessage(`Room No ${roomId} was delete`)
+            if (result) {
+                setSuccessMessage(`Room No ${roomId} was deleted`)
                 fetchRooms()
             } else {
-                console.error(`Error deleting room : ${result.message}`)
+                setErrorMessage("Error deleting room")
             }
         } catch (error) {
             setErrorMessage(error.message)

@@ -6,6 +6,7 @@ import Logout from '../auth/Logout'
 export default function NavBar() {
     const isLoggedIn = localStorage.getItem("token")
     const userRole = localStorage.getItem("userRole")
+    const isAdmin = (userRole || "").includes("ROLE_ADMIN")
 
     const [showAccount, setShowAccount] = useState(false)
 
@@ -44,7 +45,7 @@ export default function NavBar() {
                     </ul>
 
                     <ul className="d-flex navbar-nav align-items-lg-center">
-                        {isLoggedIn && userRole === "ROLE_ADMIN" && (
+                        {isLoggedIn && isAdmin && (
                             <li className="nav-item me-lg-2 my-2 my-lg-0">
                                 <Link to={"/admin"} className="btn btn-hotel btn-sm px-3">
                                     <FaUserShield className="me-1" /> Admin Panel

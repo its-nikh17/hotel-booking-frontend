@@ -37,12 +37,13 @@ export default function RoomSearch() {
     setIsLoading(true)
 
     getAvailableRooms(searchQuery.checkInDate, searchQuery.checkOutDate, searchQuery.roomType)
-      .then((response) => {
-        setAvailableRooms(response.data)
-        setTimeout(() => setIsLoading(false), 2000)
+      .then((rooms) => {
+        setAvailableRooms(rooms)
+        setErrorMessage(rooms.length === 0 ? "No rooms available for the selected dates and room type." : "")
       })
       .catch((error) => {
-        console.log(error)
+        setErrorMessage(error.message)
+        setAvailableRooms([])
       })
       .finally(() => {
         setIsLoading(false)
@@ -118,10 +119,8 @@ export default function RoomSearch() {
 
       {isLoading ? (
         <p className="mt-4 text-muted">Finding available rooms...</p>
-      ) : availableRooms ? (
-        <RoomSearchResult results={availableRooms} onClearSearch={handleClearSearch} />
       ) : (
-        <p className="mt-4 text-muted">No rooms available for the selected dates and room type.</p>
+        <RoomSearchResult results={availableRooms} onClearSearch={handleClearSearch} />
       )}
 
       {errorMessage && <p className="text-danger mt-3 mb-0">{errorMessage}</p>}

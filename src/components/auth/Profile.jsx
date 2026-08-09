@@ -18,13 +18,7 @@ export default function Profile() {
         roles: [{ id: "", name: "" }]
     })
 
-    const [bookings, setBookings] = useState({
-        id: "",
-        room: { id: "", roomType: "" },
-        checkInDate: "",
-        checkOutDate: "",
-        bookingConfirmationCode: ""
-    })
+    const [bookings, setBookings] = useState([])
 
     const [message, setMessage] = useState("")
     const [errorMessage, setErrorMessage] = useState("")
@@ -62,12 +56,12 @@ export default function Profile() {
 
         if (confirmed) {
             try {
-                const response = await deleteUser()
+                const response = await deleteUser(userId)
                 auth.handleLogout()
-                setMessage(response.data)
+                setMessage(response)
                 navigate("/")
             } catch (error) {
-                setErrorMessage(error.data)
+                setErrorMessage(error.message)
             }
         }
     }
@@ -184,14 +178,10 @@ export default function Profile() {
                                         <td>{booking.room.id}</td>
                                         <td>{booking.room.roomType}</td>
                                         <td>
-                                            {moment(booking.checkInDate)
-                                                .subtract(1, "month")
-                                                .format("MMM Do, YYYY")}
+                                            {moment(booking.checkInDate).format("MMM Do, YYYY")}
                                         </td>
                                         <td>
-                                            {moment(booking.checkOutDate)
-                                                .subtract(1, "month")
-                                                .format("MMM Do, YYYY")}
+                                            {moment(booking.checkOutDate).format("MMM Do, YYYY")}
                                         </td>
                                         <td>{booking.bookingConfirmationCode}</td>
                                         <td className="text-success">On-going</td>

@@ -10,11 +10,11 @@ export default function FindBooking() {
         roomNumber: "",
         checkInDate: "",
         checkOutDate: "",
-        guestName: "",
+        guestFullName: "",
         guestEmail: "",
         numOfAdults: "",
         numOfChildren: "",
-        totalNumOfGuests: ""
+        totalNumOfGuest: ""
     }
 
     const [bookingInfo, setBookingInfo] = useState(emptyBookingInfo)
@@ -40,10 +40,10 @@ export default function FindBooking() {
         } catch (error) {
             setBookingInfo(emptyBookingInfo)
 
-            if (error.response && error.response.status === 404) {
-                setError(error.response.data.message)
-            } else {
+            if (error.message) {
                 setError(error.message)
+            } else {
+                setError("Booking not found")
             }
         }
 
@@ -73,7 +73,7 @@ export default function FindBooking() {
     }
 
     if (error) {
-        <div className="text-danger">Error: {error}</div>
+        return <div className="text-danger">Error: {error}</div>
     }
 
 
@@ -109,17 +109,17 @@ export default function FindBooking() {
                         <p>Room Type: {bookingInfo.room.roomType}</p>
                         <p>
                             Check-in Date:{" "}
-                            {moment(bookingInfo.checkInDate).subtract(1, "month").format("MMM Do, YYYY")}
+                            {moment(bookingInfo.checkInDate).format("MMM Do, YYYY")}
                         </p>
                         <p>
                             Check-out Date:{" "}
-                            {moment(bookingInfo.checkOutDate).subtract(1, "month").format("MMM Do, YYYY")}
+                            {moment(bookingInfo.checkOutDate).format("MMM Do, YYYY")}
                         </p>
-                        <p>Full Name: {bookingInfo.guestName}</p>
+                        <p>Full Name: {bookingInfo.guestFullName}</p>
                         <p>Email Address: {bookingInfo.guestEmail}</p>
                         <p>Adults: {bookingInfo.numOfAdults}</p>
                         <p>Children: {bookingInfo.numOfChildren}</p>
-                        <p>Total Guest: {bookingInfo.totalNumOfGuests}</p>
+                        <p>Total Guest: {bookingInfo.totalNumOfGuest}</p>
 
                         {!isDeleted && (
                             <button
