@@ -1,5 +1,6 @@
 import React from 'react'
 import { Col, Container, Row } from "react-bootstrap"
+import BrandLogo from '../common/BrandLogo'
 
 export default function Footer() {
     const today = new Date()
@@ -9,7 +10,9 @@ export default function Footer() {
                 <Row className="align-items-center">
                     <Col xs={12} className="text-center">
                         <p className="mb-0">
-                            <span className="footer-brand">StaySure</span>
+                            <span className="footer-brand">
+                                <BrandLogo showIcon={false} variant="footer" />
+                            </span>
                             <span className="footer-tagline ms-2">
                                 &mdash; Find your perfect stay
                             </span>

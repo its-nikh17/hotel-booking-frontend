@@ -1,4 +1,5 @@
 import React from 'react'
+import BrandLogo from './BrandLogo'
 import Header from "./Header"
 import { Container, Row, Col, Card } from "react-bootstrap"
 import {
@@ -28,7 +29,7 @@ export default function HotelService() {
             <Container className="mt-4">
                 <div className="text-center mb-4">
                     <h4 className="section-title">
-                        Amenities at <span className="hotel-color">StaySure</span>
+                        Amenities at <BrandLogo showIcon={false} />
                     </h4>
                     <p className="section-subtitle mt-2">
                         <FaClock className="me-2 hotel-color" />

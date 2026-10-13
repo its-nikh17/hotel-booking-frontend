@@ -145,6 +145,51 @@ body {
     color: var(--color-primary);
 }
 
+/* ── StaySure brand ── */
+.brand-logo__mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: var(--radius-sm);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+    color: #fff;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(30, 64, 175, 0.25);
+}
+
+.brand-wordmark {
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1;
+}
+
+.brand-wordmark--default .brand-wordmark__stay {
+    color: var(--color-primary);
+}
+
+.brand-wordmark--default .brand-wordmark__sure {
+    color: var(--color-accent);
+}
+
+.brand-wordmark--hero .brand-wordmark__stay {
+    color: #fff;
+}
+
+.brand-wordmark--hero .brand-wordmark__sure {
+    color: #93c5fd;
+}
+
+.brand-wordmark--footer .brand-wordmark__stay {
+    color: #fff;
+}
+
+.brand-wordmark--footer .brand-wordmark__sure {
+    color: #93c5fd;
+}
+
 .room-price {
     color: var(--color-gold);
     font-weight: 700;

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { NavLink, Link } from 'react-router-dom'
-import { FaHotel, FaUserShield } from 'react-icons/fa'
+import { FaUserShield } from 'react-icons/fa'
+import BrandLogo from '../common/BrandLogo'
 import Logout from '../auth/Logout'
 
 export default function NavBar() {
@@ -18,9 +19,8 @@ export default function NavBar() {
         <nav className="navbar navbar-expand-lg sticky-top shadow-sm">
             <div className="container-fluid px-4">
 
-                <Link to={"/"} className="navbar-brand d-flex align-items-center gap-2">
-                    <FaHotel className="hotel-color" />
-                    <span className="hotel-color">StaySure</span>
+                <Link to={"/"} className="navbar-brand d-flex align-items-center">
+                    <BrandLogo />
                 </Link>
 
                 <button
