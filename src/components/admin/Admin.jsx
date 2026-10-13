@@ -8,7 +8,7 @@ export default function Admin() {
         <section className="admin-panel container">
             <div className="mb-4">
                 <h2 className="section-title">Admin Panel</h2>
-                <p className="section-subtitle">Manage rooms and bookings for Hotel Booking</p>
+                <p className="section-subtitle">Manage rooms and bookings for StaySure</p>
             </div>
 
             <Row className="g-4">

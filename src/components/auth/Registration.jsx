@@ -45,7 +45,7 @@ export default function Registration() {
                 {successMessage && <div className="alert alert-success py-2">{successMessage}</div>}
 
                 <h2>Create Account</h2>
-                <p className="auth-subtitle">Join Hotel Booking and start exploring</p>
+                <p className="auth-subtitle">Join StaySure and start exploring</p>
 
                 <form onSubmit={handleRegistration}>
                     <div className="row g-3 mb-3">

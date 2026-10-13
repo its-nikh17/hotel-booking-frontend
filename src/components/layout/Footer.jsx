@@ -9,13 +9,13 @@ export default function Footer() {
                 <Row className="align-items-center">
                     <Col xs={12} className="text-center">
                         <p className="mb-0">
-                            <span className="footer-brand">Hotel Booking</span>
+                            <span className="footer-brand">StaySure</span>
                             <span className="footer-tagline ms-2">
                                 &mdash; Find your perfect stay
                             </span>
                         </p>
                         <p className="footer-tagline mb-0 mt-1" style={{ fontSize: "0.8rem" }}>
-                            &copy; {today.getFullYear()} Hotel Booking. All rights reserved.
+                            &copy; {today.getFullYear()} StaySure. All rights reserved.
                         </p>
                     </Col>
                 </Row>

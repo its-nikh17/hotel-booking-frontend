@@ -43,7 +43,7 @@ export default function Login() {
                 {errorMessage && <div className="alert alert-danger py-2">{errorMessage}</div>}
 
                 <h2>Welcome Back</h2>
-                <p className="auth-subtitle">Sign in to your Hotel Booking account</p>
+                <p className="auth-subtitle">Sign in to your StaySure account</p>
 
                 <form onSubmit={handleSubmit}>
                     <div className="mb-3">

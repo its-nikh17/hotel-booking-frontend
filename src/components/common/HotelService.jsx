@@ -28,7 +28,7 @@ export default function HotelService() {
             <Container className="mt-4">
                 <div className="text-center mb-4">
                     <h4 className="section-title">
-                        Amenities at <span className="hotel-color">Hotel Booking</span>
+                        Amenities at <span className="hotel-color">StaySure</span>
                     </h4>
                     <p className="section-subtitle mt-2">
                         <FaClock className="me-2 hotel-color" />

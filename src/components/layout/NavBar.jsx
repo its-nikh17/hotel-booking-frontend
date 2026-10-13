@@ -20,7 +20,7 @@ export default function NavBar() {
 
                 <Link to={"/"} className="navbar-brand d-flex align-items-center gap-2">
                     <FaHotel className="hotel-color" />
-                    <span className="hotel-color">Hotel Booking</span>
+                    <span className="hotel-color">StaySure</span>
                 </Link>
 
                 <button
